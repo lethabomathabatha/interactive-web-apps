@@ -40,7 +40,20 @@ body {
 /* controls */
 
 .controls {
-  background-color: yellow;
+  background-color: var(--color-green);
+  font-size: 1.2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.controls button {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+.controls select {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
 }
 
 /* counter */
