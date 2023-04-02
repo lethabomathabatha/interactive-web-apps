@@ -1,5 +1,3 @@
-
-
 const rent = 400;
 const tax = '12%';
 const food = 51.7501;
@@ -16,13 +14,11 @@ if (hourOfDay === 0 && minuteOfDay === 0) {
 	const balance = startingAfterTax - transport - food - rent
     console.log('R'+ balance.toFixed(2))
 }   
-    else if (hourOfDay === undefined && minuteOfDay === undefined) {
+    else if (hourOfDay === undefined || minuteOfDay === undefined) {
         console.log('Balance cannot be calculated. Time Unknown')
     }
 	
-    else ( hourOfDay === undefined || minuteOfDay === undefined); {
+    else  {
         console.log('Balance cannot be calculated. Time Unknown')
     }
-
-
 
