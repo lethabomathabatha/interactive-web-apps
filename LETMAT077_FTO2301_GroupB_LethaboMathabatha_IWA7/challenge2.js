@@ -8,12 +8,35 @@ currently, the following gets logged:
 Good morning, ${nickname} || {firstname}!.
 
 Please change the expression, in the console log, to behave correctly, and 
-explain why it did not behave as expected. Furthermore, please add a state that when 
-neither a firstname nor nickname is present only Good morning! should be logged.
+explain why it did not behave as expected. Furthermore, please add a state 
+that when neither a firstname nor nickname is present only Good morning! should be logged.
 */
  
 
 const nickname= "Timmy";
 const firstname = "Timothy";
+const chosenName = (nickname && `${nickname}`) || firstname
 
-console.log("Good Morning, ${nickname} || {firstname}!")
+if (chosenName){
+    console.log(`Good Morning, ${chosenName}!`)
+}
+else  {
+    console.log("Good Morning!")
+}
+
+
+// Alternative solution:
+const nickname1= "Timmy";
+const firstname1 = "Timothy";
+
+if (nickname1) {
+    console.log("Good Morning, " + nickname1 + "!")
+}
+else if (firstname1) {
+    console.log("Good Morning, " + firstname1 + "!")
+}
+
+else  {
+    console.log("Good Morning!")
+}
+
