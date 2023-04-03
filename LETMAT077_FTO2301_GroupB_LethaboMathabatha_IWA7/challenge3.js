@@ -2,7 +2,7 @@
 (only a single console.log) but split into three different lines.
 
 It should be as follows:
-*/
+
 Leo Musvaire (Owed: R 9394.00)
 Sarah Kleinhans (Owed: R 4582.20)
 
@@ -29,7 +29,9 @@ It is recommended that you Google and read up on the following:
 
 * The difference between parseInt and parseFloat
 * The .toFixed() method
+
 */
+
 const leoName = 'Leo'
 const leoSurname = 'Musvaire     '
 const leoBalance = '-9394'
@@ -42,10 +44,13 @@ const divider = '----------------------------------'
 
 // Only change below this line
 
-const owed = parseInt('R' + leoBalance + sarahBalance)
-const leo = "{leoName} + {leoSurname} + \"Owed\" + \"R\" + {sarahBalance}"
-const sarah = "{leoName} + {surname} + \"Owed\" + \"R\" + {sarahBalance}"
-const total = "Total amount owed: "
-const result = leo + sarah + divider + divider + total + owed + divider
+const owed = parseFloat(leoBalance  * -1) + parseFloat(sarahBalance * -1); 
+
+const leo = `\n${leoName} ${leoSurname.trim()} (Owed: R ${(parseFloat(-1 * leoBalance).toFixed(2))}`
+const sarah = `\n${sarahName.trim()} ${sarahSurname} (Owed: R ${(parseFloat(-1 * sarahBalance).toFixed(2))}`
+const total = "\n  Total amount owed: R "
+const dividerLine = "\n----------------------------------"
+
+const result = leo + sarah + dividerLine + total + owed.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(',', '.') + dividerLine + "\n " 
 
 console.log(result)
