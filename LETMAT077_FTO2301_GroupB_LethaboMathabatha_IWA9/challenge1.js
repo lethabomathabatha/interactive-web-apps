@@ -34,6 +34,9 @@ const minuteOfDay = 0;
 
 // Only change the syntax below (not the values or key names)
 
+/**
+ * All the account expenses (food, transport, rent) are nested together.
+ */
 const expenses = {
     food: 51.7501,
     transport:  10.2,
@@ -56,15 +59,17 @@ const expenses = {
 		'large-house': 2400,
 	},
 }
-
 // You can change below however you want
+
+// Inclusion of conditional statement to specify when balance should be calculated, i.e. at midnight
 if (hourOfDay === 0 && minuteOfDay === 0) {
 const taxAsDecimal = parseInt(expenses.tax[913]) / 100;
 const startingAfterTax = salary  * (1 - taxAsDecimal);
-const rentAmount = parseInt(expenses.rent["large-apartment"]);
+const type = `${size}-${lodging}`;
+const rentAmount = expenses.rent[type];
 const taxableAmount = startingAfterTax - rentAmount;
-
 const balance = taxableAmount - expenses.transport - expenses.food;
+
 console.log(balance.toFixed(2));
 } else {
 	console.log("Balance cannot be calculated at this time.")
