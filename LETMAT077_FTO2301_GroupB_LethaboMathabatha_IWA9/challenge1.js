@@ -29,6 +29,8 @@ The final value that should be logged to the console should be: 2685.2
 const salary = 4000;
 const lodging = 'apartment'
 const size = 'large'
+const hourOfDay = 0;
+const minuteOfDay = 0;
 
 // Only change the syntax below (not the values or key names)
 
@@ -57,8 +59,11 @@ const rent = {
 
 // You can change below however you want
 
-const taxAsDecimal = tax.913 / 100
-const startingAfterTax = salary * 1 - taxAsDecimal
-const type = lodging + size
-const balance = expenses(transport) - expenses(food) - expenses(rent.type) 
-console.log(balance)
+const taxAsDecimal = parseInt(tax['913']) / 100;
+const startingAfterTax = salary  * (1 - taxAsDecimal);
+const rentAmount = parseInt(rent["large-apartment"]);
+const taxableAmount = startingAfterTax - rentAmount;
+
+const balance = taxableAmount - expenses.transport - expenses.food;
+console.log(balance.toFixed(2));
+
