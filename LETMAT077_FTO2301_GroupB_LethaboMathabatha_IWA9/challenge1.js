@@ -35,8 +35,9 @@ const minuteOfDay = 0;
 // Only change the syntax below (not the values or key names)
 
 /**
- * All the account expenses (food, transport, rent) are nested together.
+ * All the account expenses (food, transport, rent) are nested together in the 'expenses' object.
  */
+
 const expenses = {
     food: 51.7501,
     transport:  10.2,
@@ -59,6 +60,8 @@ const expenses = {
 		'large-house': 2400,
 	},
 }
+
+
 // You can change below however you want
 
 // Inclusion of conditional statement to specify when balance should be calculated, i.e. at midnight
@@ -72,5 +75,5 @@ const balance = taxableAmount - expenses.transport - expenses.food;
 
 console.log(balance.toFixed(2));
 } else {
-	console.log("Balance cannot be calculated at this time.")
+	console.log("Balance cannot be calculated at this time.") 
 }
