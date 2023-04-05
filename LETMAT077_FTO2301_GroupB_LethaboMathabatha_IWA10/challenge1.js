@@ -55,7 +55,35 @@ const futureId = 9
 
 // Do not change code above this comment
 
-console.log(holidays.futureId.name || 'ID {futureId} not created yet')
+// 1. Checking whether an item has been assigned to key 9
+console.log(holidays[futureId]?.name || 'ID 9 not created yet.')
+
+/* Alternative code for condition 1:
+if (holidays[futureId]) {
+	console.log(holidays[futureId].name)
+} else {
+	console.log('ID 9 not created yet.')
+}
+*/
+
+
+
+// Temporary changes are stored here:
+const copied = {
+	holidays: {
+		name: holidays[6].name,
+		date: holidays[6].date
+	}
+}
+
+const correct = {
+	name: 'X-mas Day',
+	date: copied.date,
+	hours: 0,
+	minutes: 0,
+}
+
+const isEarlier = copied.date < holidays[6].date
 
 copied = holidays.christmas
 copied = { name: 'X-mas Day' }
