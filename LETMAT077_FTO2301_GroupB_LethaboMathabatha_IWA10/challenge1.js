@@ -55,10 +55,10 @@ const futureId = 9
 
 // Do not change code above this comment
 
-// 1. Checking whether an item has been assigned to key 9
+// Checking whether an item has been assigned to key 9
 console.log(holidays[futureId]?.name || 'ID 9 not created yet.')
 
-/* Alternative code for condition 1:
+/* Alternative code for above condition:
 if (holidays[futureId]) {
 	console.log(holidays[futureId].name)
 } else {
@@ -77,9 +77,9 @@ const copied = {
 }
 
 const correct = {
-	name: 'X-mas Day',
+	newName: 'X-mas Day',
 	date: copied.date,
-	time : {
+	newTime: {
 		hours: 0,
 		minutes: 0,
 	}
@@ -87,7 +87,7 @@ const correct = {
 
 // Checking if new date is earlier than current date
 const currentDate = holidays[6].date
-const isEarlier = copied.date <holidays[6].date
+const isEarlier = copied.date < holidays[6].date
 
 if (isEarlier) {
 	console.log("New date is earlier: true")
@@ -98,11 +98,20 @@ if (isEarlier) {
 
 // If date is earlier, apply changes to copied
 if (isEarlier) {
-    holidays[6].name = correct.name
-    console.log(`Changes applied: \nID change: false \nName change: ${correct.name} \nTime change: ${correct.time.hours.toString().padStart(2, '0')}:${correct.time.minutes.toString().padStart(2, '0')} \nDate change: ${copied.date.toLocaleDateString('en-ZA')}`);
+    holidays[6].name = correct.newName
+    console.log(`Changes applied: 
+	\nID change: false 
+	\nName change: ${correct.newName} 
+	\nTime change: ${correct.newTime.hours.toString().padStart(2, '0')}:${correct.newTime.minutes.toString().padStart(2, '0')} 
+	\nDate change: ${copied.date.toLocaleDateString('en-ZA')}`); 
+	// the use of padStart() creates leading zeros for the hour and minutes variables. The first argument ('2') specifies the length of the string, and the second argument ('0') specifies the character that will be leading
 } else {
     console.log('Changes not applied.')
 }
+
+
+// Converting string date in the 'holidays'[0] object to Date object
+holidays[0].date = new Date(holidays[0].date);
 
 // Getting first holiday of the year
 const firstHolidayTimestamp = Math.min(
@@ -117,13 +126,14 @@ const firstHolidayTimestamp = Math.min(
     holidays[8].date,
 );
 
-
 const firstHolidayDate = new Date(firstHolidayTimestamp);
-const formattedFirstDate = `${firstHolidayDate.getDate()}/${firstHolidayDate.getMonth() +1}/ 2030`;
 
-console.log(`The first holiday of the year is ${formattedFirstDate}`);
+const day = firstHolidayDate.getDate();
+const month = firstHolidayDate.getMonth() + 1;
+const year = firstHolidayDate.getFullYear();
 
-
+console.log(`The first holiday of the year: ${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`);
+  
 // Getting last holiday of the year
 const lastHolidayTimestamp = Math.max(
     holidays[0].date,
@@ -137,7 +147,13 @@ const lastHolidayTimestamp = Math.max(
     holidays[8].date,
 )
 
+const lastHolidayDate = new Date(lastHolidayTimestamp);
 
+const lastDay = lastHolidayDate.getDate();
+const lastMonth = lastHolidayDate.getMonth() + 1;
+const lastYear = lastHolidayDate.getFullYear();
+
+console.log(`The last holiday of the year: ${lastDay.toString().padStart(2, '0')}/${lastMonth.toString().padStart(2, '0')}/${lastYear}`); // used padStart so that it is not hardcoded, incase the last holiday of the year is a single digit month
 
 // Logging a random holiday
 const randomHoliday = holidays[Math.floor(Math.random() * Object.keys(holidays).length)].date.toLocaleDateString('en-ZA', {day: '2-digit', month: '2-digit', year: 'numeric'})
