@@ -79,55 +79,70 @@ const copied = {
 const correct = {
 	name: 'X-mas Day',
 	date: copied.date,
-	hours: 0,
-	minutes: 0,
+	time : {
+		hours: 0,
+		minutes: 0,
+	}
 }
 
-const isEarlier = copied.date < holidays[6].date
+// Checking if new date is earlier than current date
+const currentDate = holidays[6].date
+const isEarlier = copied.date <holidays[6].date
 
-copied = holidays.christmas
-copied = { name: 'X-mas Day' }
-correctDate = copied.date
-correctDate.hours = 0
-correctDate.minutes = 0
-isEarlier = copied.date < holidays[6].date
-console.log('New date is earlier:', isEarlier)
-if (isEarlier) copied.date = correctDate
-console.log('ID change:', holidays[christmas].id != copied.id || copied.id)
-console.log('Name change:', holidays[christmas].name != copied.name || copied.name)
-console.log('Date change:', holidays[christmas].date != copied.date || copied.date)
+if (isEarlier) {
+	console.log("New date is earlier: true")
+} else {
+	console.log(`New date is earlier: ${copied.date < holidays[6].date}`);
+  }
 
+
+// If date is earlier, apply changes to copied
+if (isEarlier) {
+    holidays[6].name = correct.name
+    console.log(`Changes applied: \nID change: false \nName change: ${correct.name} \nTime change: ${correct.time.hours.toString().padStart(2, '0')}:${correct.time.minutes.toString().padStart(2, '0')} \nDate change: ${copied.date.toLocaleDateString('en-ZA')}`);
+} else {
+    console.log('Changes not applied.')
+}
+
+// Getting first holiday of the year
 const firstHolidayTimestamp = Math.min(
-    holidays[0].date.getTime,
-    holidays[1].date.getTime,
-    holidays[2].date.getTime,
-    holidays[3].date.getTime,
-    holidays[4].date.getTime,
-    holidays[5].date.getTime,
-    holidays[6].date.getTime,
-    holidays[7].date.getTime,
-    holidays[8].date.getTime,
-)
+    holidays[0].date,
+    holidays[1].date,
+    holidays[2].date,
+    holidays[3].date,
+    holidays[4].date,
+    holidays[5].date,
+    holidays[6].date,
+    holidays[7].date,
+    holidays[8].date,
+);
 
+const firstHolidayDate = new Date(firstHolidayTimestamp);
+const formattedDate = `${firstHolidayDate.getDate()}/${}`
+const firstDay = firstHolidayTimestamp.getDate();
+const firstMonth = firstHolidayTimestamp.getMonth() +1;
+
+console.log(`The first holiday of the year is ${firstDay}/${firstMonth}/${2030}`);
+
+// Getting last holiday of the year
 const lastHolidayTimestamp = Math.max(
-    holidays[0].date.getTime,
-    holidays[1].date.getTime,
-    holidays[2].date.getTime,
-    holidays[3].date.getTime,
-    holidays[4].date.getTime,
-    holidays[5].date.getTime,
-    holidays[6].date.getTime,
-    holidays[7].date.getTime,
-    holidays[8].date.getTime,
+    holidays[0].date,
+    holidays[1].date,
+    holidays[2].date,
+    holidays[3].date,
+    holidays[4].date,
+    holidays[5].date,
+    holidays[6].date,
+    holidays[7].date,
+    holidays[8].date,
 )
 
-const firstDay = firstHolidayTimestamp.getDate
-const firstMonth = firstHolidayTimestamp.getMonth
-const lastDay = lastHolidayTimestamp.getDate
-const lastMonth = lastHolidayTimestamp.getMonth
+const lastDay = lastHolidayTimestamp.getDate();
+const lastMonth = lastHolidayTimestamp.getMonth() +1;
 
-console.log('{firstDay}/{firstMonth}/{currentYear}')
-console.log('{lastDay}/{lastMonth}/{currentYear}')
+console.log(`The last holiday of the year is ${lastDay}/${lastMonth}/${2030}`);
 
+
+// Random holiday
 const randomHoliday = holidays[Math.random]
 console.log(randomHoliday.date)
