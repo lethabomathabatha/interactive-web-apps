@@ -117,14 +117,12 @@ const firstHolidayTimestamp = Math.min(
     holidays[8].date,
 );
 
+
 const firstHolidayDate = new Date(firstHolidayTimestamp);
 const formattedFirstDate = `${firstHolidayDate.getDate()}/${firstHolidayDate.getMonth() +1}/ 2030`;
 
 console.log(`The first holiday of the year is ${formattedFirstDate}`);
-// const firstDay = firstHolidayTimestamp.getDate();
-// const firstMonth = firstHolidayTimestamp.getMonth() +1;
 
-//console.log(`The first holiday of the year is ${firstDay}/${firstMonth}/${2030}`);
 
 // Getting last holiday of the year
 const lastHolidayTimestamp = Math.max(
@@ -139,17 +137,9 @@ const lastHolidayTimestamp = Math.max(
     holidays[8].date,
 )
 
-const lastHolidayDate = new Date(lastHolidayTimestamp);
-const formattedLastDate = `${lastHolidayDate.getDate()}/${lastHolidayDate.getMonth() +1}/2030`;
-
-console.log(`The last holiday of the year is ${formattedLastDate}`);
-
-// const lastDay = lastHolidayTimestamp.getDate();
-// const lastMonth = lastHolidayTimestamp.getMonth() +1;
-
-// console.log(`The last holiday of the year is ${lastDay}/${lastMonth}/${2030}`);
 
 
 // Logging a random holiday
 const randomHoliday = holidays[Math.floor(Math.random() * Object.keys(holidays).length)].date.toLocaleDateString('en-ZA', {day: '2-digit', month: '2-digit', year: 'numeric'})
 console.log(`Random holiday: ${randomHoliday}`)
+
