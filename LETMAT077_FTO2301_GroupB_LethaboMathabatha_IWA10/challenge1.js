@@ -82,25 +82,18 @@ console.log(
 	correct.newDate < holidays[6].date ? `New date is earlier: ${true}`: `New date is earlier: ${false}`)
 
 
-// let date = copied.holidays[6].date.getDate();
-// let holidayMonth = copied.holidays[6].date.getMonth() +1;
-// let fullYear = copied.holidays[6].date.getFullYear();
-
-// let newDateFormat = `${date}/${holidayMonth}/${fullYear}`;
-
 if (correct.newDate < holidays[6].date ) {
 	console.log(`Changes applied: 
 	 	\nID change: false 
 		\nName change: ${correct.newName} 
 		\nTime change: ${correct.newTime.hours.toString().padStart(2, '0')}:${correct.newTime.minutes.toString().padStart(2, '0')} 
-		\nDate change: `)
+		\nDate change: ${correct.newDate.toLocaleDateString('en-GB')}`)
 }
-
-
 
 
 // Converting string date in the 'holidays'[0] object to Date object
 holidays[0].date = new Date(holidays[0].date);
+
 
 // Getting first holiday of the year
 const firstHolidayTimestamp = Math.min(
@@ -145,6 +138,6 @@ console.log(`The last holiday of the year: ${lastDay.toString().padStart(2, '0')
 
 
 // Logging a random holiday
-const randomHoliday = holidays[Math.floor(Math.random() * Object.keys(holidays).length)].date.toLocaleDateString('en-ZA', {day: '2-digit', month: '2-digit', year: 'numeric'})
+const randomHoliday = holidays[Math.floor(Math.random() * Object.keys(holidays).length)].date.toLocaleDateString('en-GB', {day: '2-digit', month: '2-digit', year: 'numeric'})
 console.log(`Random holiday: ${randomHoliday}`)
 
