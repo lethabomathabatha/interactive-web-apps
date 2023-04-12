@@ -1,63 +1,103 @@
-// scripts.js
-
 const STATUS_MAP = {
-  shelf: {
-      color: 'green',
-      canReserve: true,
-      canCheckout: true,
-      canCheckIn: false,
-  },
-  reserved: {
-      color: 'blue',
-      canReserve: false,
-      canCheckout: true,
-      canCheckIn: false,
-  },
-  overdue: {
-      color: 'red',
-      canReserve: false,
-      canCheckout: false,
-      canCheckIn: true,
-  },
-  checkedOut: {
-      color: 'orange',
-      canReserve: false,
-      canCheckout: false,
-      canCheckIn: true,
-  }
+    shelf: {
+        color: 'green',
+        canReserve: true,
+        canCheckout: true,
+        canCheckIn: false,
+    },
+    reserved: {
+        color: 'blue',
+        canReserve: false,
+        canCheckout: true,
+        canCheckIn: false,
+    },
+    overdue: {
+        color: 'red',
+        canReserve: false,
+        canCheckout: false,
+        canCheckIn: true,
+    },
+    checkedOut: {
+        color: 'orange',
+        canReserve: false,
+        canCheckout: false,
+        canCheckIn: true,
+    }
 }
 
 // Edit below line 
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkin = selector(checkin)
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkin = selector(checkin)
+// Get button IDs and classes
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkin = selector(checkin)
+const allBooks = document.querySelectorAll('div[id^="book"]'); // getting all ids that start with 'book'
 
-checkin.0.color = none
-status.0.style.color = STATUS_MAP.status.color
-reserve.0 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.0 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkin.0 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
+// Loop to get statuses for all the books
+allBooks.forEach((book) => {
+    
+// Get book status and compare to status map requirements
+    const status = book.querySelector('.status');
+    const bookStatus = status.innerText.trim();
+    const statusMap = STATUS_MAP[bookStatus];
 
-checkin.1.color = none
-status.1.style.color = STATUS_MAP.status.color
-reserve.1 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.1 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkin.1 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
 
-checkin.2.color = none
-status.2.style.color = STATUS_MAP.status.color
-reserve.2 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.2 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkin.2 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
+    const reserve = book.querySelector('.reserve');
+    const checkout = book.querySelector('.checkout');
+    const checkin = book.querySelector('.checkin');
+
+// Disable-Enable buttons according to corresponding status
+    if (statusMap.canReserve) {
+        reserve.disabled = false;
+       
+    } else {
+        reserve.disabled = true;
+        checkin.style.color = "black";
+    }
+    
+    if (statusMap.canCheckout) {
+        checkout.disabled = false;
+        
+    
+    } else {
+        checkout.disabled = true;
+        checkin.style.color = "lightgrey";
+    }
+    
+    if (statusMap.canCheckIn) {
+        checkin.disabled = false; 
+        checkin.style.color = "black";
+        
+    } else {
+        checkin.disabled = true;
+        checkin.style.color = "lightgrey";
+    }
+    
+    status.style.color = statusMap.color;
+
+// add event listeners according to corresponding status
+
+    reserve.addEventListener('click', () => {
+        status.innerText = 'reserved';
+        reserve.disabled = true;
+        checkout.disabled = false;
+        checkin.disabled = true;
+        status.style.color = STATUS_MAP.reserved.color;
+      });
+    
+    checkout.addEventListener('click', () => {
+        status.innerText = 'checkedOut';
+        reserve.disabled = true;
+        checkout.disabled = true;
+        checkin.disabled = false;
+        status.style.color = STATUS_MAP.checkedOut.color;
+      });
+    
+    checkin.addEventListener('click', () => {
+        status.innerText = 'shelf';
+        reserve.disabled = false;
+        checkout.disabled = false;
+        checkin.disabled = true;
+        status.style.color = STATUS_MAP.shelf.color;
+      });
+        
+});
