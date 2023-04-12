@@ -15,7 +15,7 @@ that when neither a firstname nor nickname is present only Good morning! should 
 
 const nickname= "Timmy";
 const firstname = "Timothy";
-const chosenName = (nickname && `${nickname}`) || firstname
+const chosenName = nickname || firstname
 
 if (chosenName){
     console.log(`Good Morning, ${chosenName}!`)
@@ -40,3 +40,9 @@ else  {
     console.log("Good Morning!")
 }
 
+
+
+// The first solution assigns 'nickname' if 'nickname' is a truthy, 
+// otherwise it will assign 'firstname'.
+
+// Both code solutions have the same functionality
