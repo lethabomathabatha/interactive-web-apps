@@ -28,24 +28,22 @@ const STATUS_MAP = {
 // Edit below line 
 
 
-// Get button IDs and classes
-
+// Get button IDs and classes for all books at once
 const allBooks = document.querySelectorAll('div[id^="book"]'); // getting all ids that start with 'book'
 
 // Loop to get statuses for all the books
 allBooks.forEach((book) => {
     
-// Get book status and compare to status map requirements
+// Get book statuses and button classes 
     const status = book.querySelector('.status');
     const bookStatus = status.innerText.trim();
     const statusMap = STATUS_MAP[bookStatus];
-
 
     const reserve = book.querySelector('.reserve');
     const checkout = book.querySelector('.checkout');
     const checkin = book.querySelector('.checkin');
 
-// Disable-Enable buttons according to corresponding status
+// Disable-Enable buttons according to corresponding statuses, as well as button greying (styling)
     if (statusMap.canReserve) {
         reserve.disabled = false;
         checkin.style.color = statusMap.canCheckIn && statusMap.color === 'green' ? 'lightgrey' : 'black';
@@ -72,7 +70,7 @@ allBooks.forEach((book) => {
     
     status.style.color = statusMap.color;
 
-// add event listeners according to corresponding status
+// adding event listeners to add 'click' functionality according to corresponding status
 
     reserve.addEventListener('click', () => {
         status.innerText = 'reserved';
