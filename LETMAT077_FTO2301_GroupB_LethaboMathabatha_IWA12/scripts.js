@@ -48,28 +48,26 @@ allBooks.forEach((book) => {
 // Disable-Enable buttons according to corresponding status
     if (statusMap.canReserve) {
         reserve.disabled = false;
-       
+        checkin.style.color = statusMap.canCheckIn && statusMap.color === 'green' ? 'lightgrey' : 'black';
     } else {
         reserve.disabled = true;
-        checkin.style.color = "black";
+        checkin.style.color = 'black';
     }
     
     if (statusMap.canCheckout) {
         checkout.disabled = false;
-        
-    
+        checkin.style.color = statusMap.color === 'red' || statusMap.color === 'orange' ? 'black' : checkin.style.color;    
     } else {
         checkout.disabled = true;
-        checkin.style.color = "lightgrey";
+        checkin.style.color = 'lightgrey';
     }
     
     if (statusMap.canCheckIn) {
         checkin.disabled = false; 
-        checkin.style.color = "black";
-        
+        checkin.style.color = statusMap.color === 'green' && !statusMap.canReserve ? 'lightgrey' : 'black';
     } else {
         checkin.disabled = true;
-        checkin.style.color = "lightgrey";
+        checkin.style.color = 'lightgrey';
     }
     
     status.style.color = statusMap.color;
