@@ -34,10 +34,6 @@ const minuteOfDay = 0;
 
 // Only change the syntax below (not the values or key names)
 
-/**
- * All the account expenses (food, transport, rent) are nested together in the 'expenses' object.
- */
-
 const expenses = {
     food: 51.7501,
     transport:  10.2,
