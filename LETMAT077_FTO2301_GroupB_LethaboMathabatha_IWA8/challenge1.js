@@ -57,3 +57,7 @@ console.log(sarah.address.postalCode)
 console.log(sarah.balance)
 
 
+// the syntax in the original code was incorrect as it used '=' instead of ' : ' to declare the nested objects
+// the access id was treated as a number instead of a string in the original code
+// using the [] notation results in a console error because 'address' and 'postalCode' are not defined variables.
+// the . notation worked because it directly accessed the property name from the object
