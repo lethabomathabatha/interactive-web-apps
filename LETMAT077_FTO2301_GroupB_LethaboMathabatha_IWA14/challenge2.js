@@ -52,3 +52,7 @@ const example2 = {
 
 example1.calculate()
 example2.calculate()
+
+// the syntax for the function declarations is incorrect.
+// 'this' is possibly meing misused because it is not accessing 'add' from within the object
+// the function name 'multiply' suggests that a, b should have a ' * ' operator, not the ' - ' between them
