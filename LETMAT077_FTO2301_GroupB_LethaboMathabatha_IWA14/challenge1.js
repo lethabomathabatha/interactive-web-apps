@@ -6,7 +6,7 @@ the following should be logged in the console twice:
 Hello, John (35). I love coding!
 
  
-Unfortunately at the moment went attempting to run the code the following error is returned:
+Unfortunately at the moment when attempting to run the code the following error is returned:
 
 hobby is not a function
 */
@@ -25,3 +25,9 @@ function hobby () {
 }
 
 hobby()
+
+
+// the parameter in the logTwice function is not declared or defined
+// console(parameter) is incorrectly stated. It should be console.log(parameter)
+// the function 'hobby' should be renamed as it conflicts with the variable 'hobby'
+// there is no variable called 'name', but there is 'firstName' which should be in place of 'name'
