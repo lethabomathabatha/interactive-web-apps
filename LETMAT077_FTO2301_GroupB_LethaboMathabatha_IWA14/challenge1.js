@@ -11,20 +11,20 @@ Unfortunately at the moment when attempting to run the code the following error 
 hobby is not a function
 */
 
-firstName = 'John';
-age = 35;
-hobby = 'Coding';
+const firstName = 'John';
+const age = 35;
+const hobby = 'Coding';
 
-const logTwice = () => {
-  console(parameter)
-  console(parameter)
+const logTwice = (parameter) => {
+  console.log(parameter)
+  console.log(parameter)
 }
 
-function hobby () {
-  logTwice(`Hello, ${name} (${age}). I love ${hobby}!`)
+const logMessage = () => {
+  logTwice(`Hello, ${firstName} (${age}). I love ${hobby}!`)
 }
 
-hobby()
+logMessage()
 
 
 // the parameter in the logTwice function is not declared or defined
