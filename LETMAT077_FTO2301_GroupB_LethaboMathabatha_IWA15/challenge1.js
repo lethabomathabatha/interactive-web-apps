@@ -41,6 +41,8 @@ const data = {
 	]
 }
 
+
+
 // Only edit below
 
 // accessing all arrays within the 'lists' object
@@ -48,15 +50,10 @@ const first = data.lists[0][1]
 const second = data.lists[1][1]
 const third = data.lists[2][1]
 
-console.log(data.lists[0][1])
-console.log(data.lists[1][1])
-console.log(data.lists[2][1])
-
 
 // accessing all the last values from the arrays within the 'lists' object
 const firstLast = first[first.length - 1]; 
 const secondLast = second[second.length - 1]; 
-
 const thirdLast = third[third.length - 1]; 
 
 
@@ -83,8 +80,6 @@ const extractBiggest = () => {
 
     return biggest;
 }
-
-
 
 
 // Only edit above
