@@ -26,26 +26,31 @@ const thirdLast = third[third.length - 1];
 const result = []
 
 const extractBiggest = () => {
-    const firstLast = data.lists[0][1][data.lists[0][1].length - 1]; 
-    const secondLast = data.lists[1][1][data.lists[1][1].length - 1];
-    const thirdLast = data.lists[2][1][data.lists[2][1].length - 1];
+    let biggestIndex = -1; // index of the list that contains biggest value
+    let biggestValue = -Infinity; // biggest value so far
+    let foundValue = false; // indicates whether any value was found
 
-    let biggestIndex = -1;
-    if (firstLast > secondLast && firstLast > thirdLast) {
-        biggestIndex = 0;
-    } else if (secondLast > firstLast && secondLast > thirdLast) {
-        biggestIndex = 1;
-    } else {
-        biggestIndex = 2;
+    // loop through each list in the data.lists array
+    for (let i = 0; i < data.lists.length; i++) {
+      const list = data.lists[i][1];
+
+      // check if the list has any elements left, and if the last element is bigger than 'biggestValue'
+      if (list.length > 0 && list[list.length - 1] > biggestValue) {
+        biggestValue = list[list.length - 1];
+        // adds to current list's index
+        biggestIndex = i;
+        foundValue = true;
+      }
     }
-
-    const biggest = data.lists[biggestIndex][1][data.lists[biggestIndex][1].length - 1];
-    data.lists[biggestIndex][1].pop();
-
-    return biggest;
-}
-
-
+    if (foundValue) {
+      data.lists[biggestIndex][1].pop();
+      return biggestValue;
+    } else {
+        // if there are no values left to evaluate
+      return undefined;
+    }
+  };
+  
 // Only edit above
 
 result.push(extractBiggest())
