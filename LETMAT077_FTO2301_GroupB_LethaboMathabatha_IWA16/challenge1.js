@@ -1,5 +1,3 @@
-// https://learn.codespace.co.za/courses/153/modules/461/lessons/1802
-
 // scripts.js
 
 const MONTHS = [
@@ -70,45 +68,94 @@ const MONTHS = [
   // Only edit below this comment
   
   const createHtml = (athlete) => {
-    firstName, surname, id, races = athlete
-    [date], [time] = races.reverse()
+    const {firstName, surname, id, races} = athlete;  
+    const [latestRace] = races.slice(-1);
+    // [{date, time}] = races.reverse()
+
+   const fragment = document.createDocumentFragment();
+    
   
-    const fragment = document.createDocumentFragment();
-  
-    title = document.createElement(h2);
-    title= id;
+
+    // Calculate total race time to minutes
+    const totalTimeInMinutes = time.reduce((acc,val) => acc + val, 0);
+    const hours = Math.floor(totalTimeInMinutes/60).toString().padStart(2, '0');
+    const minutes = (totalTimeInMinutes % 60).toString().padStart(2, '0');
+
+    // Create the title and list elements
+    const title = document.createElement('h2');
+    title.textContent= id;
     fragment.appendChild(title);
   
-    const list = document.createElement(dl);
+    // create list
+    const list = document.createElement('dl');
+    
+    // Listing names, dates, total races
+    const fullName = document.createElement('dt');
+    fullName.textContent = 'Full name';
+    list.appendChild(fullName);
+    const fullNameValue = document.createElement('dd');
+    fullNameValue.textContent = `${firstName} ${surname}`;
+    list.appendChild(fullNameValue);
+
+
+    const totalRaces = document.createElement('dt');
+    totalRaces.textContent = 'Total Races';
+    list.appendChild(totalRaces);
+    const totalRacesValue = document.createElement('dd');
+    totalRacesValue.textContent = races.length.toString();
+    list.appendChild(totalRacesValue);
+
+    const dateLabel = document.createElement("dt");
+    dateLabel.textContent = "Event Date (Latest)";
+    list.appendChild(dateLabel)
+    
+   
+  const latestEventDate = document.createElement("dt");
+  latestEventDate.textContent = "Date of most recent race (format: dd MM YYYY)";
+  list.appendChild(latestEventDate);
+  const latestEventDateValue = document.createElement("dd");
+  const latestEventDateObj = new Date(latestRace.date);
+  latestEventDateValue.textContent = latestEventDateObj.toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+  list.appendChild(latestEventDateValue);
+ 
+    // Formate the race date
+    // const eventDate = new Date(date);
+    // const formattedDate = eventDate.toLocaleDateString('en-US', {
+    //     day: 'numeric',
+    //     month: 'short' ,
+    //     year: 'numeric',
+    // });
+
+
+    const latestEventDuration = document.createElement("dt");
+    latestEventDuration.textContent = "Duration of most recent race (format: hh:mm)";
+    list.appendChild(latestEventDuration);
+    const latestEventDurationValue = document.createElement("dd");
+    const hours = Math.floor(latestRace.time / 60);
+    const minutes = latestRace.time % 60;
+    latestEventDurationValue.textContent = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}`;
+    list.appendChild(latestEventDurationValue);
   
-    const day = date.getDate();
-    const month = MONTHS[date.month];
-    const year = date.year;
-  
-    first, second, third, fourth = timeAsArray;
-    total = first + second + third + fourth;
-  
-    const hours = total / 60;
-    const minutes = total / hours / 60;
-  
-    list.innerHTML = /* html */ `
-      <dt>Athlete</dt>
-      <dd>${firstName surname}</dd>
-  
-      <dt>Total Races</dt>
-      <dd>${races}</dd>
-  
-      <dt>Event Date (Latest)</dt>
-      <dd>${day month year}</dd>
-  
-      <dt>Total Time (Latest)</dt>
-      <dd>${hours.padStart(2, 0) minutes}</dd>
-    `;
-  
-    fragment.appendChild(list);
-  }
+//Appending all additions to the DOM
+dl.appendChild(ful);
+dl.appendChild(dd1);
+dl.appendChild(dt2);
+dl.appendChild(dd2);
+dl.appendChild(dt3);
+dl.appendChild(dd3);
+dl.appendChild(dt4);
+dl.appendChild(dd4);
+added.appendChild(dl);
+return added;
+  };
   
   [NM372], [SV782] = data
   document.querySelector(NM372).appendChild(createHtml(NM372));
   document.querySelector(SV782).appendChild(createHtml(SV782));
-  
+}
