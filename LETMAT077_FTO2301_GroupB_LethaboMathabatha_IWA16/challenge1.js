@@ -1,5 +1,3 @@
-// scripts.js
-
 const MONTHS = [
     'Jan',
     'Feb',
@@ -69,84 +67,67 @@ const MONTHS = [
   
   const createHtml = (athlete) => {
     const {firstName, surname, id, races} = athlete;  
-    const [latestRace] = races.slice(-1);
-    // [{date, time}] = races.reverse()
-
-   const fragment = document.createDocumentFragment();
-    
-  
-
-    // Calculate total race time to minutes
-    const totalTimeInMinutes = time.reduce((acc,val) => acc + val, 0);
-    const hours = Math.floor(totalTimeInMinutes/60).toString().padStart(2, '0');
-    const minutes = (totalTimeInMinutes % 60).toString().padStart(2, '0');
+    const [latestRace] = races.slice(-1); // destructuring last item of the races array
 
     // Create the title and list elements
-    const title = document.createElement('h2');
-    title.textContent= id;
-    fragment.appendChild(title);
-  
-    // create list
+    const dl = document.createElement('dl');
+    const dt1 = document.createElement('dt');
+    const dd1 = document.createElement('dd');
+    const dt2 = document.createElement('dt');
+    const dd2 = document.createElement('dd');
+    const dt3 = document.createElement('dt');
+    const dd3 = document.createElement('dd');
+    const dt4 = document.createElement('dt');
+    const dd4 = document.createElement('dd');
+
+    
     const list = document.createElement('dl');
-    
-    // Listing names, dates, total races
-    const fullName = document.createElement('dt');
-    fullName.textContent = 'Full name';
-    list.appendChild(fullName);
-    const fullNameValue = document.createElement('dd');
-    fullNameValue.textContent = `${firstName} ${surname}`;
-    list.appendChild(fullNameValue);
 
+    // athlete name and title
+    const h2 = document.createElement('h2');
+    h2.textContent = `Athlete: ${id}`;
 
-    const totalRaces = document.createElement('dt');
-    totalRaces.textContent = 'Total Races';
-    list.appendChild(totalRaces);
-    const totalRacesValue = document.createElement('dd');
-    totalRacesValue.textContent = races.length.toString();
-    list.appendChild(totalRacesValue);
+    dt1.textContent = 'Full Name: ';
+    dd1.textContent = `${firstName} ${surname}`;
 
-    const dateLabel = document.createElement("dt");
-    dateLabel.textContent = "Event Date (Latest)";
-    list.appendChild(dateLabel)
-    
-   
-  const latestEventDate = document.createElement("dt");
-  latestEventDate.textContent = "Date of most recent race (format: dd MM YYYY)";
-  list.appendChild(latestEventDate);
-  const latestEventDateValue = document.createElement("dd");
-  const latestEventDateObj = new Date(latestRace.date);
-  latestEventDateValue.textContent = latestEventDateObj.toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-  list.appendChild(latestEventDateValue);
- 
-    // Formate the race date
-    // const eventDate = new Date(date);
-    // const formattedDate = eventDate.toLocaleDateString('en-US', {
-    //     day: 'numeric',
-    //     month: 'short' ,
-    //     year: 'numeric',
-    // });
+    // total races
+    dt2.textContent = 'Total Races: ';
+    dd2.textContent = races.length;
 
+    // latest race date
+    dt3.textContent = 'Latest Race Date: ';
+    dd3.textContent = new Date(latestRace.date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+    });
 
-    const latestEventDuration = document.createElement("dt");
-    latestEventDuration.textContent = "Duration of most recent race (format: hh:mm)";
-    list.appendChild(latestEventDuration);
-    const latestEventDurationValue = document.createElement("dd");
-    const hours = Math.floor(latestRace.time / 60);
-    const minutes = latestRace.time % 60;
-    latestEventDurationValue.textContent = `${hours.toString().padStart(2, "0")}:${minutes
-      .toString()
-      .padStart(2, "0")}`;
-    list.appendChild(latestEventDurationValue);
+    // latest race time, formatted to minutes
+    const totalTime = latestRace.time.reduce((acc, curr) => acc + curr, 0);
+    const hours = Math.floor(totalTime / 60).toString().padStart(2, '0');
+    const minutes = (totalTime % 60).toString().padStart(2, '0');
   
+    // total time
+    dt4.textContent = 'Total Time (Latest): ';
+    dd4.textContent = `${hours}:${minutes}`;
 
+   // Append elements to list
+    dl.appendChild(h2);
+    dl.appendChild(dt1);
+    dl.appendChild(dd1);
+    dl.appendChild(dt2);
+    dl.appendChild(dd2);
+    dl.appendChild(dt3);
+    dl.appendChild(dd3);
+    dl.appendChild(dt4);
+    dl.appendChild(dd4);
 
+    return dl;
+   
   };
   
-  [NM372], [SV782] = data
-  document.querySelector(NM372).appendChild(createHtml(NM372));
-  document.querySelector(SV782).appendChild(createHtml(SV782));
-}
+  const NM372 = 'NM372';
+  const SV782 = 'SV782';
+  document.querySelector(`#${NM372}`).appendChild(createHtml(data.response.data[NM372]));
+  document.querySelector(`#${SV782}`).appendChild(createHtml(data.response.data[SV782]));
+
