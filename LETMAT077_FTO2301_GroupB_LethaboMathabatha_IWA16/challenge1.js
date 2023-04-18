@@ -85,9 +85,9 @@ const MONTHS = [
 
     // athlete name and title
     const h2 = document.createElement('h2');
-    h2.textContent = `Athlete: ${id}`;
+    h2.textContent = `${id}`;
 
-    dt1.textContent = 'Full Name: ';
+    dt1.textContent = 'Athlete: ';
     dd1.textContent = `${firstName} ${surname}`;
 
     // total races
@@ -95,8 +95,8 @@ const MONTHS = [
     dd2.textContent = races.length;
 
     // latest race date
-    dt3.textContent = 'Latest Race Date: ';
-    dd3.textContent = new Date(latestRace.date).toLocaleDateString('en-US', {
+    dt3.textContent = 'Event Date (Latest): ';
+    dd3.textContent = new Date(latestRace.date).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'short',
     year: 'numeric'
@@ -111,7 +111,7 @@ const MONTHS = [
     dt4.textContent = 'Total Time (Latest): ';
     dd4.textContent = `${hours}:${minutes}`;
 
-   // Append elements to list
+   // append elements to list
     dl.appendChild(h2);
     dl.appendChild(dt1);
     dl.appendChild(dd1);
@@ -123,11 +123,9 @@ const MONTHS = [
     dl.appendChild(dd4);
 
     return dl;
-   
   };
   
   const NM372 = 'NM372';
   const SV782 = 'SV782';
   document.querySelector(`#${NM372}`).appendChild(createHtml(data.response.data[NM372]));
   document.querySelector(`#${SV782}`).appendChild(createHtml(data.response.data[SV782]));
-
