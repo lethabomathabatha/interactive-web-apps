@@ -142,17 +142,8 @@ const MONTHS = [
       .padStart(2, "0")}`;
     list.appendChild(latestEventDurationValue);
   
-//Appending all additions to the DOM
-dl.appendChild(ful);
-dl.appendChild(dd1);
-dl.appendChild(dt2);
-dl.appendChild(dd2);
-dl.appendChild(dt3);
-dl.appendChild(dd3);
-dl.appendChild(dt4);
-dl.appendChild(dd4);
-added.appendChild(dl);
-return added;
+
+
   };
   
   [NM372], [SV782] = data
