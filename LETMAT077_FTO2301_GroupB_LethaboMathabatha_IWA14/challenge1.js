@@ -31,3 +31,4 @@ logMessage()
 // console(parameter) is incorrectly stated. It should be console.log(parameter)
 // the function 'hobby' should be renamed as it conflicts with the variable 'hobby'
 // there is no variable called 'name', but there is 'firstName' which should be in place of 'name'
+
