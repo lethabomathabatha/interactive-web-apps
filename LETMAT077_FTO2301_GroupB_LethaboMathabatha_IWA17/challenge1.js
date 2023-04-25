@@ -33,13 +33,6 @@ const createArray = (length) => {
   return result;
 };
 
-// const getDaysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-// new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-
-/**
- * 
- * @returns something
- */
 const createData = () => {
   const current = new Date();
   current.setDate(1);
@@ -48,11 +41,6 @@ const createData = () => {
   const daysInMonth = getDaysInMonth(current);
 
   const result = [];
-
-
-  // const weekObject = createArray(5)
-  // const dayObject= createArray(7)
-  // value = null
 
   for (let weekIndex = 0; weekIndex < 6; weekIndex++) {
       const weekObject = {
@@ -76,7 +64,7 @@ const createData = () => {
   return result;
 };
 
-const addCell = (/*existing,*/ classString, value) => {
+const addCell = ( classString, value) => {
   return /* html */ `
       <td class = 'table__cell  ${classString}'>
           ${value}
@@ -97,13 +85,11 @@ const createHtml = (data) => {
           let classString = 'table__cell';
 
           // Setting class for weekends
-          // const isWeekend = dayOfWeek === 1 || dayOfWeek === 7;
           if (dayOfWeek === 1 || dayOfWeek === 7) {
             classString += ' table__cell_weekend';
           };
 
           // Setting class for alternate weeks
-          // const isAlternate = week.week % 2 === 0;
           if (week.week % 2 === 0) {
             classString += ' table__cell_alternate';
           } 
