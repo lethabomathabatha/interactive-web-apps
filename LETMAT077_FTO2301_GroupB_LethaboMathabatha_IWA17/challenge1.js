@@ -99,7 +99,7 @@ const createHtml = (data) => {
           // Setting class for weekends
           // const isWeekend = dayOfWeek === 1 || dayOfWeek === 7;
           if (dayOfWeek === 1 || dayOfWeek === 7) {
-            classString += 'table__cell_weekend';
+            classString += ' table__cell_weekend';
           };
 
           // Setting class for alternate weeks
@@ -110,7 +110,7 @@ const createHtml = (data) => {
 
           // Setting class for current date
           if (value === new Date().getDate()) {
-            classString += 'table__cell_today';
+            classString += ' table__cell_today';
           }
           
           inner += addCell( classString, value);
