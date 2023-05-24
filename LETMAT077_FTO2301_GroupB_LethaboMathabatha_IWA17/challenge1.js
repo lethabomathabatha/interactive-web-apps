@@ -33,6 +33,14 @@ const createArray = (length) => {
   return result;
 };
 
+/**
+ * Creates an array of objects representing the days of a month, 
+ * grouped by week.
+ *
+ * @return {Array} An array of week objects, each containing a week number 
+ * and an array of day objects, each containing a day of the week number 
+ * and a day value.
+ */
 const createData = () => {
   const current = new Date();
   current.setDate(1);
@@ -64,6 +72,14 @@ const createData = () => {
   return result;
 };
 
+
+/**
+ * Generates an HTML table cell with the given CSS class and value.
+ *
+ * @param {string} classString - The CSS class to apply to the cell.
+ * @param {string} value - The value to display in the cell.
+ * @return {string} The HTML table cell.
+ */
 const addCell = ( classString, value) => {
   return /* html */ `
       <td class = 'table__cell  ${classString}'>
@@ -73,6 +89,12 @@ const addCell = ( classString, value) => {
   // return result;
 };
 
+/**
+ * Creates an HTML table with the given data.
+ *
+ * @param {Array} data - An array of objects, each containing a week with days.
+ * @return {string} The resulting HTML table as a string.
+ */
 const createHtml = (data) => {
   let result = '';
 
@@ -114,3 +136,4 @@ document.querySelector('[data-title]').innerText = `${MONTHS[current.getMonth()]
 
 const data = createData();
 document.querySelector('[data-content]').innerHTML = createHtml(data)
+
